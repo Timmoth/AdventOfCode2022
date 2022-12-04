@@ -8,7 +8,7 @@ namespace Tests
         [InlineData(2, "abbc")]
         [InlineData(52, "aba", "ZZ")]
         [InlineData(157, "vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg", "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw")]
-        public void CalculateTotalPriorityReturnsTotalPriority(int expectedValue, params string[] input)
+        public void ProcessReturnsTotalPriorityForEachDuplicateItem(int expectedValue, params string[] input)
         {
             //Given 
             var inputLines = input.ToArray();
@@ -17,7 +17,21 @@ namespace Tests
             var output = Day3.Process(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output);
+            Assert.Equal(expectedValue, output.totalPriorityForDuplicateItems);
+        }
+
+        [Theory]
+        [InlineData(70, "vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg", "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw")]
+        public void ProcessReturnsTotalPriorityForEachGroup(int expectedValue, params string[] input)
+        {
+            //Given 
+            var inputLines = input.ToArray();
+
+            //When
+            var output = Day3.Process(inputLines);
+
+            //Then
+            Assert.Equal(expectedValue, output.totalPriorityForEachGroup);
         }
     }
 }
