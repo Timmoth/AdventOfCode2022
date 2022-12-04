@@ -1,14 +1,15 @@
 ﻿
 var input = File.ReadAllLines("./day4.csv");
 var output = Day4.Process(input);
-Console.WriteLine($"Total overlapping assignments: \t{output}");
+Console.WriteLine($"Total complete overlapping assignments pairs: \t{output.totalCompleteOverlappingAssignmentPairs}");
+Console.WriteLine($"Total overlapping assignments pairs: \t{output.totalOverlappingAssignmentPairs}");
 Console.Read();
 
 public static class Day4
 {
-    public static int Process(string[] input)
+    public static (int totalCompleteOverlappingAssignmentPairs, int totalOverlappingAssignmentPairs) Process(string[] input)
     {
-        int output = 0;
+        (int totalCompleteOverlappingAssignmentPairs, int totalOverlappingAssignmentPairs) output = new();
 
         Span<string> inputAsSpan = input;
         for (int i = 0; i < inputAsSpan.Length; i++)
@@ -26,10 +27,21 @@ public static class Day4
             var assignment2Start = int.Parse(assignment2.Slice(0, assignment2delimiterIndex));
             var assignment2End = int.Parse(assignment2.Slice(assignment2delimiterIndex + 1, assignment2.Length - (assignment2delimiterIndex + 1)));
 
+            //assignment 1 contains assignment 2 OR assignment 2 contains assignment 1
             if(assignment1Start <= assignment2Start && assignment1End >= assignment2End ||
                 assignment2Start <= assignment1Start && assignment2End >= assignment1End)
             {
-                output++;
+                output.totalCompleteOverlappingAssignmentPairs++;
+                output.totalOverlappingAssignmentPairs++;
+                continue;
+            }
+
+            //overlap
+            if (assignment1Start <= assignment2Start && assignment1End >= assignment2Start || 
+                assignment1Start <= assignment2End && assignment1End >= assignment2End)
+            {
+                output.totalOverlappingAssignmentPairs++;
+                continue;
             }
         }
 
