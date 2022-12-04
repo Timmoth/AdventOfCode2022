@@ -1,14 +1,34 @@
 ﻿
 var input = File.ReadAllLines("./day1.csv");
-var mostCaloriesCarried = Day1.GetMostCaloriesCarried(input);
-Console.WriteLine(mostCaloriesCarried);
+var output = Day1.Process(input);
+Console.WriteLine($"Most calories carried by one elf: \t{output.mostCaloriesCountedByOneElf}");
+Console.WriteLine($"Most calories carried by three elfs: \t{output.mostCaloriesCountedByThreeElfs}");
 Console.Read();
 
 public static class Day1
 {
-    public static int GetMostCaloriesCarried(string[] input)
+    private static void Update(this ref (int first, int second, int third) topCaloriesCarried, int caloriesCarried)
     {
-        int mostCaloriesCarried = 0;
+        if (topCaloriesCarried.first < caloriesCarried)
+        {
+            topCaloriesCarried.third = topCaloriesCarried.second;
+            topCaloriesCarried.second = topCaloriesCarried.first;
+            topCaloriesCarried.first = caloriesCarried;
+        }
+        else if (topCaloriesCarried.second < caloriesCarried)
+        {
+            topCaloriesCarried.third = topCaloriesCarried.second;
+            topCaloriesCarried.second = caloriesCarried;
+        }
+        else if (topCaloriesCarried.third < caloriesCarried)
+        {
+            topCaloriesCarried.third = caloriesCarried;
+        }
+    }
+    public static (int mostCaloriesCountedByOneElf, int mostCaloriesCountedByThreeElfs) Process(string[] input)
+    {
+        (int first, int second, int third) answer = (0, 0, 0);
+
         int currentCaloriesCounted = 0;
         Span<string> inputAsSpan = input;
         for(int i = 0; i < inputAsSpan.Length; i++)
@@ -16,10 +36,7 @@ public static class Day1
             var line = inputAsSpan[i];
             if (string.IsNullOrEmpty(line))
             {
-                if(mostCaloriesCarried < currentCaloriesCounted)
-                {
-                    mostCaloriesCarried = currentCaloriesCounted;
-                }
+                answer.Update(currentCaloriesCounted);
                 currentCaloriesCounted = 0;
                 continue;
             }
@@ -27,11 +44,8 @@ public static class Day1
             currentCaloriesCounted += int.Parse(line);
         }
 
-        if (currentCaloriesCounted > mostCaloriesCarried)
-        {
-            return currentCaloriesCounted;
-        }
+        answer.Update(currentCaloriesCounted);
 
-        return mostCaloriesCarried;
+        return (answer.first, answer.first + answer.second + answer.third);
     }
 }

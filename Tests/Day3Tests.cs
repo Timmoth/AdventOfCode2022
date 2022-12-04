@@ -14,7 +14,7 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day3.CalculateTotalPriority(inputLines);
+            var output = Day3.Process(inputLines);
 
             //Then
             Assert.Equal(expectedValue, output);

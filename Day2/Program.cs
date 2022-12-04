@@ -1,8 +1,8 @@
 ﻿
 var input = File.ReadAllLines("./day2.csv");
-var score = Day2.CalculateScore(input);
-
-Console.WriteLine(score);
+var output = Day2.Process(input);
+Console.WriteLine($"Total score for part1: \t{output.part1Score}");
+Console.WriteLine($"Total score for part2: \t{output.part2Score}");
 Console.Read();
 
 public static class Day2
@@ -13,19 +13,31 @@ public static class Day2
         new int[] { 6, 3, 0 },
         new int[] { 0, 6, 3 },
     };
-    public static int CalculateScore(string[] input)
+
+    private static readonly int[][] RequiredChoiceMatrix = new int[][]
     {
-        int score = 0;
+        new int[] { 2, 0, 1 },
+        new int[] { 0, 1, 2 },
+        new int[] { 1, 2, 0 },
+    };
+    public static (int part1Score, int part2Score) Process(string[] input)
+    {
+        (int part1Score, int part2Score) answer = (0, 0);
 
         Span<string> inputAsSpan = input;
         for (int i = 0; i < inputAsSpan.Length; i++)
         {
-            var line = inputAsSpan[i];
+            ReadOnlySpan<char> line = inputAsSpan[i];
             int opponentsPlay = line[0] - 65;
-            int yourPlay = line[2] - 88;
-            score += OutcomeMatrix[yourPlay][opponentsPlay] + yourPlay + 1;
+            int secondColumn = line[2] - 88;
+
+            //OutcomeMatrix: [Your play][Their play] => [Points]
+            answer.part1Score += OutcomeMatrix[secondColumn][opponentsPlay] + secondColumn + 1;
+
+            //RequiredChoiceMatrix: [Points][Their play] => [Your play]
+            answer.part2Score += secondColumn * 3 + RequiredChoiceMatrix[secondColumn][opponentsPlay] + 1;
         }
 
-        return score;
+        return answer;
     }
 }

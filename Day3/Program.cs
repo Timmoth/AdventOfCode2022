@@ -1,13 +1,13 @@
 ﻿
 var input = File.ReadAllLines("./day3.csv");
-var score = Day3.CalculateTotalPriority(input);
+var score = Day3.Process(input);
 
 Console.WriteLine(score);
 Console.Read();
 
 public static class Day3
 {
-    public static int CalculateTotalPriority(string[] input)
+    public static int Process(string[] input)
     {
         int totalPriority = 0;
 
