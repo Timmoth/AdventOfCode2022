@@ -1,15 +1,22 @@
-﻿
-var input = File.ReadAllLines("./day3.csv");
-var output = Day3.Process(input);
-Console.WriteLine($"Total priority for duplicate items: \t{output.totalPriorityForDuplicateItems}");
-Console.WriteLine($"Total priority for each group: \t{output.totalPriorityForEachGroup}");
-Console.Read();
-
-public static class Day3
+﻿public static class Day3
 {
-    public static (int totalPriorityForDuplicateItems, int totalPriorityForEachGroup) Process(string[] input)
+    public static int ProcessPart1(string[] input)
     {
-        (int totalPriorityForDuplicateItems, int totalPriorityForEachGroup) output = new();
+        int answer = 0;
+
+        Span<string> inputAsSpan = input;
+        for (int i = 0; i < inputAsSpan.Length; i++)
+        {
+            ReadOnlySpan<char> line = inputAsSpan[i];
+            answer += GetElfDuplicateItemPriority(line);
+        }
+
+        return answer;
+    }
+
+    public static int ProcessPart2(string[] input)
+    {
+        int answer = 0;
 
         ReadOnlySpan<char> elfA = null;
         ReadOnlySpan<char> elfB = null;
@@ -18,7 +25,6 @@ public static class Day3
         for (int i = 0; i < inputAsSpan.Length; i++)
         {
             ReadOnlySpan<char> line = inputAsSpan[i];
-            output.totalPriorityForDuplicateItems += GetElfDuplicateItemPriority(line);
 
             if(elfA == null)
             {
@@ -29,13 +35,13 @@ public static class Day3
             }
             else
             {
-                output.totalPriorityForEachGroup += GetElfGroupBadgePriority(elfA, elfB, line);
+                answer += GetElfGroupBadgePriority(elfA, elfB, line);
                 elfA = null;
                 elfB = null;
             }
         }
 
-        return output;
+        return answer;
     }
     private static int GetElfDuplicateItemPriority(ReadOnlySpan<char> line)
     {

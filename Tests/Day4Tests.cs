@@ -11,10 +11,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day4.Process(inputLines);
+            var output = Day4.ProcessPart1(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.totalCompleteOverlappingAssignmentPairs);
+            Assert.Equal(expectedValue, output);
         }
 
         [Theory]
@@ -27,10 +27,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day4.Process(inputLines);
+            var output = Day4.ProcessPart2(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.totalOverlappingAssignmentPairs);
+            Assert.Equal(expectedValue, output);
         }
     }
 }

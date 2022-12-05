@@ -20,10 +20,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day2.Process(inputLines);
+            var output = Day2.ProcessPart1(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.part1Score);
+            Assert.Equal(expectedValue, output);
         }
 
           [Theory]
@@ -43,10 +43,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day2.Process(inputLines);
+            var output = Day2.ProcessPart2(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.part2Score);
+            Assert.Equal(expectedValue, output);
         }
     }
 }

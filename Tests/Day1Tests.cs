@@ -14,10 +14,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day1.Process(inputLines);
+            var output = Day1.ProcessPart1(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.mostCaloriesCountedByOneElf);
+            Assert.Equal(expectedValue, output);
         }
 
         [Theory]
@@ -32,10 +32,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day1.Process(inputLines);
+            var output = Day1.ProcessPart2(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.mostCaloriesCountedByThreeElfs);
+            Assert.Equal(expectedValue, output);
         }
     }
 }

@@ -14,10 +14,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day3.Process(inputLines);
+            var output = Day3.ProcessPart1(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.totalPriorityForDuplicateItems);
+            Assert.Equal(expectedValue, output);
         }
 
         [Theory]
@@ -28,10 +28,10 @@ namespace Tests
             var inputLines = input.ToArray();
 
             //When
-            var output = Day3.Process(inputLines);
+            var output = Day3.ProcessPart2(inputLines);
 
             //Then
-            Assert.Equal(expectedValue, output.totalPriorityForEachGroup);
+            Assert.Equal(expectedValue, output);
         }
     }
 }

@@ -16,11 +16,10 @@ namespace Tests
         public void ProcessReturnsTopCratesOnEachStackForCrateMover9000(string expectedValue, params string[] input)
         {
             //Given 
-            Day5.IsCrateMover9000 = true;
             var inputLines = input.ToArray();
 
             //When
-            var output = Day5.Process(inputLines);
+            var output = Day5.ProcessPart1(inputLines);
 
             //Then
             Assert.Equal(expectedValue, output);
@@ -40,11 +39,10 @@ namespace Tests
         public void ProcessReturnsTopCratesOnEachStackForCrateMover9001(string expectedValue, params string[] input)
         {
             //Given 
-            Day5.IsCrateMover9000 = false;
             var inputLines = input.ToArray();
 
             //When
-            var output = Day5.Process(inputLines);
+            var output = Day5.ProcessPart2(inputLines);
 
             //Then
             Assert.Equal(expectedValue, output);
