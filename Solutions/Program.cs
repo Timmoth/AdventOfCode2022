@@ -33,6 +33,11 @@ switch (selection)
         Console.WriteLine($"Part1: \t{Day5.ProcessPart1(input)}");
         Console.WriteLine($"Part2: \t{Day5.ProcessPart2(input)}");
         break;
+    case 6:
+        input = File.ReadAllLines("./Day6.csv");
+        Console.WriteLine($"Part1: \t{Day6.ProcessPart1(input[0])}");
+        Console.WriteLine($"Part2: \t{Day6.ProcessPart2(input[0])}");
+        break;
 }
 
 Console.ReadLine();
