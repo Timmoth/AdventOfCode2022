@@ -34,3 +34,15 @@ Note - I've opted for performance over tidiness in my solutions!
 |--------------- |---------:|---------:|---------:|-------:|----------:|
 | BenchmarkPart1 | 38.50 us | 0.313 us | 0.348 us | 5.2490 |  42.99 KB |
 | BenchmarkPart2 | 42.06 us | 0.620 us | 0.550 us | 6.9580 |  56.98 KB |
+
+## Day 6
+|         Method |     Mean |    Error |   StdDev |   Gen0 | Allocated |
+|--------------- |---------:|---------:|---------:|-------:|----------:|
+| BenchmarkPart1 | 38.56 us | 0.726 us | 0.865 us | 5.2490 |  42.99 KB |
+| BenchmarkPart2 | 39.58 us | 0.209 us | 0.164 us | 6.9580 |  56.98 KB |
+
+## Day 7
+|         Method |     Mean |    Error |   StdDev |    Gen0 |   Gen1 | Allocated |
+|--------------- |---------:|---------:|---------:|--------:|-------:|----------:|
+| BenchmarkPart1 | 43.38 us | 0.815 us | 0.762 us | 15.1367 | 4.3335 | 123.75 KB |
+| BenchmarkPart2 | 48.58 us | 0.852 us | 0.797 us | 15.3198 | 4.3335 | 125.38 KB |
