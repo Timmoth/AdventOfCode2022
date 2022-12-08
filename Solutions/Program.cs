@@ -43,6 +43,11 @@ switch (selection)
         Console.WriteLine($"Part1: \t{Day7.ProcessPart1(input)}");
         Console.WriteLine($"Part2: \t{Day7.ProcessPart2(input)}");
         break;
+    case 8:
+        input = File.ReadAllLines("./Day8.csv");
+        Console.WriteLine($"Part1: \t{Day8.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day8.ProcessPart2(input)}");
+        break;
     default:
         Console.WriteLine($"Day not found!");
         break;
