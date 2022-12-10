@@ -15,7 +15,7 @@ public static class Day10
                 signalStrength += register * cycleCount;
             }
 
-            var line = input[instructionIndex];
+            var line = input[instructionIndex].AsSpan();
             if (line[0] == 'a')
             {
                 // addx opertation
@@ -51,7 +51,7 @@ public static class Day10
                 outputLineBuilder.Clear();
             }
 
-            var line = input[instructionIndex];
+            var line = input[instructionIndex].AsSpan();
             if (line[0] == 'a')
             {
                 pixelIndex = cycleCount % 40;
