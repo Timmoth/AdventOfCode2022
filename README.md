@@ -62,5 +62,5 @@ Note - I've opted for performance over tidiness in my solutions!
 ## Day10
 |         Method |     Mean |     Error |    StdDev |   Gen0 | Allocated |
 |--------------- |---------:|----------:|----------:|-------:|----------:|
-| BenchmarkPart1 | 1.083 us | 0.0094 us | 0.0088 us |      - |         - |
-| BenchmarkPart2 | 1.665 us | 0.0068 us | 0.0057 us | 0.3109 |    2616 B |
+| BenchmarkPart1 | 1.082 us | 0.0063 us | 0.0056 us |      - |         - |
+| BenchmarkPart2 | 1.483 us | 0.0059 us | 0.0055 us | 0.1659 |    1400 B |
