@@ -58,3 +58,9 @@ Note - I've opted for performance over tidiness in my solutions!
 |--------------- |---------:|--------:|--------:|--------:|--------:|--------:|----------:|
 | BenchmarkPart1 | 464.2 us | 5.07 us | 4.24 us | 41.5039 | 41.5039 | 41.5039 | 364.92 KB |
 | BenchmarkPart2 | 614.2 us | 5.86 us | 5.19 us | 23.4375 |  6.8359 |       - | 200.52 KB |
+
+## Day10
+|         Method |     Mean |     Error |    StdDev |   Gen0 | Allocated |
+|--------------- |---------:|----------:|----------:|-------:|----------:|
+| BenchmarkPart1 | 1.554 us | 0.0134 us | 0.0119 us | 0.3662 |      3 KB |
+| BenchmarkPart2 | 2.262 us | 0.0399 us | 0.0354 us | 0.6790 |   5.55 KB |
