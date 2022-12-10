@@ -17,7 +17,7 @@ public static class Day9
         for (var i = 0 ; i < input.Length; i++)
         {
             // Decode instruction
-            var instruction = input[i];
+            var instruction = input[i].AsSpan();
             var dir = instruction[0];
             var dis = int.Parse(instruction[2..]);
 
@@ -59,7 +59,7 @@ public static class Day9
         for (var i = 0; i < input.Length; i++)
         {
             // Decode input
-            var instruction = input[i];
+            var instruction = input[i].AsSpan();
             var dir = instruction[0];
             var dis = int.Parse(instruction[2..]);
 
