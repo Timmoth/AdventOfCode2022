@@ -54,10 +54,10 @@ Note - I've opted for performance over tidiness in my solutions!
 | BenchmarkPart2 | 1,468.2 us | 6.27 us | 5.87 us | 80.0781 | 50.7813 | 664.35 KB |
 
 ## Day9
-|         Method |     Mean |   Error |  StdDev |    Gen0 |    Gen1 |    Gen2 | Allocated |
-|--------------- |---------:|--------:|--------:|--------:|--------:|--------:|----------:|
-| BenchmarkPart1 | 464.2 us | 5.07 us | 4.24 us | 41.5039 | 41.5039 | 41.5039 | 364.92 KB |
-| BenchmarkPart2 | 614.2 us | 5.86 us | 5.19 us | 23.4375 |  6.8359 |       - | 200.52 KB |
+|         Method |     Mean |   Error |   StdDev |    Gen0 |    Gen1 |    Gen2 | Allocated |
+|--------------- |---------:|--------:|---------:|--------:|--------:|--------:|----------:|
+| BenchmarkPart1 | 452.7 us | 8.66 us | 10.30 us | 41.0156 | 41.0156 | 41.0156 | 315.07 KB |
+| BenchmarkPart2 | 581.4 us | 5.09 us |  4.25 us | 17.5781 |  4.8828 |       - | 150.66 KB |
 
 ## Day10
 |         Method |     Mean |     Error |    StdDev |   Gen0 | Allocated |
