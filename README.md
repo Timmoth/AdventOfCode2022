@@ -64,3 +64,9 @@ Note - I've opted for performance over tidiness in my solutions!
 |--------------- |---------:|----------:|----------:|-------:|----------:|
 | BenchmarkPart1 | 1.082 us | 0.0063 us | 0.0056 us |      - |         - |
 | BenchmarkPart2 | 1.483 us | 0.0059 us | 0.0055 us | 0.1659 |    1400 B |
+
+## Day11
+|         Method |        Mean |     Error |    StdDev |   Gen0 | Allocated |
+|--------------- |------------:|----------:|----------:|-------:|----------:|
+| BenchmarkPart1 |    14.07 us |  0.225 us |  0.210 us | 0.8392 |   6.95 KB |
+| BenchmarkPart2 | 6,058.51 us | 85.597 us | 66.828 us |      - |   7.19 KB |
