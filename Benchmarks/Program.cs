@@ -37,6 +37,9 @@ switch (selection)
     case 10:
         BenchmarkRunner.Run<Day10Benchmarks>();
         break;
+    case 11:
+        BenchmarkRunner.Run<Day11Benchmarks>();
+        break;
     case -1:
         BenchmarkRunner.Run<Day1Benchmarks>();
         BenchmarkRunner.Run<Day2Benchmarks>();
@@ -48,6 +51,7 @@ switch (selection)
         BenchmarkRunner.Run<Day8Benchmarks>();
         BenchmarkRunner.Run<Day9Benchmarks>();
         BenchmarkRunner.Run<Day10Benchmarks>();
+        BenchmarkRunner.Run<Day11Benchmarks>();
         break;
 }
 
