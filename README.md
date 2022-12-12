@@ -70,3 +70,9 @@ Note - I've opted for performance over tidiness in my solutions!
 |--------------- |------------:|----------:|----------:|-------:|----------:|
 | BenchmarkPart1 |    14.07 us |  0.225 us |  0.210 us | 0.8392 |   6.95 KB |
 | BenchmarkPart2 | 6,058.51 us | 85.597 us | 66.828 us |      - |   7.19 KB |
+
+## Day12
+|         Method |         Mean |       Error |      StdDev |      Gen0 |     Gen1 |   Allocated |
+|--------------- |-------------:|------------:|------------:|----------:|---------:|------------:|
+| BenchmarkPart1 |     325.1 us |     3.21 us |     2.84 us |   22.9492 |   6.8359 |   189.68 KB |
+| BenchmarkPart2 | 133,209.7 us | 1,972.11 us | 1,748.22 us | 3500.0000 | 250.0000 | 29291.45 KB |
