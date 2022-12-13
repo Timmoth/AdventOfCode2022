@@ -113,49 +113,40 @@
 
     public static Node GetShortestPath(this Node[][] nodes, Node start, Node end)
     {
-        var visitedNodes = new List<Node>();
-        var nextNodes = new List<Node>();
+        var visitedNodes = new HashSet<Node>();
+        var nextNodes = new PriorityQueue<Node,int>();
         start.Visited = true;
         start.ShortestDistance = 0;
         visitedNodes.Add(start);
         nextNodes.GetNeighbours(nodes, start);
 
-        while (!end.Visited && nextNodes.Any())
+        while (!end.Visited && nextNodes.Count > 0)
         {
-            Node closestNeighbour = nextNodes.First();
-            for (int i = 1; i < nextNodes.Count; i++)
+            nextNodes.TryDequeue(out var closestNeighbour, out var _);
+            if (closestNeighbour.Visited)
             {
-                var t = nextNodes[i];
-                if (t.ShortestDistance < closestNeighbour.ShortestDistance)
-                {
-                    closestNeighbour = t;
-                }
+                continue;
             }
 
             closestNeighbour.Visited = true;
             visitedNodes.Add(closestNeighbour);
-            nextNodes.Remove(closestNeighbour);
             nextNodes.GetNeighbours(nodes, closestNeighbour);
         }
 
         return end;
     }
 
-    public static void GetNeighbours(this List<Node> next, Node[][] nodes, Node node)
+    public static void GetNeighbours(this PriorityQueue<Node, int> next, Node[][] nodes, Node node)
     {
         if(node.X - 1 >= 0)
         {
             var nextNode = nodes[node.Y][node.X - 1];
             if(!nextNode.Visited && nextNode.Height <= node.Height + 1)
             {
-                if (!next.Contains(nextNode))
-                {
-                    next.Add(nextNode);
-                }
-
                 if (node.ShortestDistance + 1 < nextNode.ShortestDistance)
                 {
                     nextNode.ShortestDistance = node.ShortestDistance + 1;
+                    next.Enqueue(nextNode, nextNode.ShortestDistance);
                 }
             }
         }
@@ -165,14 +156,10 @@
             var nextNode = nodes[node.Y][node.X + 1];
             if (!nextNode.Visited && nextNode.Height <= node.Height + 1)
             {
-                if (!next.Contains(nextNode))
-                {
-                    next.Add(nextNode);
-                }
-
                 if (node.ShortestDistance + 1 < nextNode.ShortestDistance)
                 {
                     nextNode.ShortestDistance = node.ShortestDistance + 1;
+                    next.Enqueue(nextNode, nextNode.ShortestDistance);
                 }
             }
         }
@@ -182,14 +169,10 @@
             var nextNode = nodes[node.Y - 1][node.X];
             if (!nextNode.Visited && nextNode.Height <= node.Height + 1)
             {
-                if (!next.Contains(nextNode))
-                {
-                    next.Add(nextNode);
-                }
-
                 if (node.ShortestDistance + 1 < nextNode.ShortestDistance)
                 {
-                    nextNode.ShortestDistance = node.ShortestDistance + 1; 
+                    nextNode.ShortestDistance = node.ShortestDistance + 1;
+                    next.Enqueue(nextNode, nextNode.ShortestDistance);
                 }
             }
         }
@@ -199,14 +182,10 @@
             var nextNode = nodes[node.Y + 1][node.X];
             if (!nextNode.Visited && nextNode.Height <= node.Height + 1)
             {
-                if (!next.Contains(nextNode))
-                {
-                    next.Add(nextNode);
-                }
-
                 if(node.ShortestDistance + 1 < nextNode.ShortestDistance)
                 {
                     nextNode.ShortestDistance = node.ShortestDistance + 1;
+                    next.Enqueue(nextNode, nextNode.ShortestDistance);
                 }
             }
         }
