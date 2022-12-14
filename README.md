@@ -72,10 +72,10 @@ Note - I've opted for performance over tidiness in my solutions!
 | BenchmarkPart2 | 6,058.51 us | 85.597 us | 66.828 us |      - |   7.19 KB |
 
 ## Day12
-|         Method |         Mean |       Error |      StdDev |      Gen0 |     Gen1 |   Allocated |
-|--------------- |-------------:|------------:|------------:|----------:|---------:|------------:|
-| BenchmarkPart1 |     325.1 us |     3.21 us |     2.84 us |   22.9492 |   6.8359 |   189.68 KB |
-| BenchmarkPart2 | 133,209.7 us | 1,972.11 us | 1,748.22 us | 3500.0000 | 250.0000 | 29291.45 KB |
+|         Method |        Mean |     Error |    StdDev |      Gen0 |     Gen1 |   Allocated |
+|--------------- |------------:|----------:|----------:|----------:|---------:|------------:|
+| BenchmarkPart1 |    228.3 us |   3.27 us |   2.90 us |   33.6914 |  16.6016 |   276.98 KB |
+| BenchmarkPart2 | 88,552.7 us | 947.80 us | 840.20 us | 8166.6667 | 166.6667 | 67273.28 KB |
 
 ## Day13
 |         Method |     Mean |   Error |  StdDev |     Gen0 |    Gen1 | Allocated |
