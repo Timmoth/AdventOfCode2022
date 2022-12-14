@@ -28,6 +28,9 @@
 	  <None Update="Day11.csv">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="Day14.csv">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="Day2.csv">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
