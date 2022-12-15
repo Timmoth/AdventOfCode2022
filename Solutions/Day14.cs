@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using Xunit.Abstractions;
-
 public static class Day14
 {
     public static ITestOutputHelper? TestOutput { get; set; } = null;
@@ -87,18 +86,6 @@ public static class Day14
     }
 
 
-    public static int ParseIntAtPosition(this ReadOnlySpan<char> line, ref int index, char delimeter)
-    {
-        var numStart = index;
-        while (index < line.Length && line[index] != delimeter)
-        {
-            index++; // char is digit -> move forward
-        }
-        index++; // Skip delimeter
-
-        return int.Parse(line[numStart..(index - 1)]);
-    }
-
     public static (List<List<(int X, int Y)>>, int minX, int maxX, int maxY) ParseInput(string[] input)
     {
         var segments = new List<List<(int X, int Y)>>();
@@ -113,8 +100,8 @@ public static class Day14
             var lineIndex = 0;
             while (lineIndex < line.Length)
             {
-                var x = ParseIntAtPosition(line, ref lineIndex, ',');
-                var y = ParseIntAtPosition(line, ref lineIndex, ' ');
+                var x = AdventHelpers.ParseIntAtPosition(line, ref lineIndex, ',');
+                var y = AdventHelpers.ParseIntAtPosition(line, ref lineIndex, ' ');
 
                 if (x < minX)
                 {

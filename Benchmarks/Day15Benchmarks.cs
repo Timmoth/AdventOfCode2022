@@ -14,12 +14,12 @@ public class Day15Benchmarks
     [Benchmark]
     public void BenchmarkPart1()
     {
-        Day15.ProcessPart1(input);
+        Day15.ProcessPart1(input, 2000000);
     }
 
     [Benchmark]
     public void BenchmarkPart2()
     {
-        Day15.ProcessPart2(input);
+        Day15.ProcessPart2(input, 4000000);
     }
 }

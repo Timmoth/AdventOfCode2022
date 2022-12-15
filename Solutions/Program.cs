@@ -80,8 +80,8 @@ switch (selection)
         break;
     case 15:
         input = File.ReadAllLines("./Day15.csv");
-        Console.WriteLine($"Part1: \t{Day15.ProcessPart1(input)}");
-        Console.WriteLine($"Part2: \t{Day15.ProcessPart2(input)}");
+        Console.WriteLine($"Part1: \t{Day15.ProcessPart1(input, 2000000)}");
+        Console.WriteLine($"Part2: \t{Day15.ProcessPart2(input, 4000000)}");
         break;
     case 16:
         input = File.ReadAllLines("./Day16.csv");
