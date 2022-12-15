@@ -90,7 +90,7 @@ Note - I've opted for performance over tidiness in my solutions!
 | BenchmarkPart2 | 22,262.7 us | 157.48 us | 131.50 us | 218.7500 | 218.7500 | 62.5000 | 336.05 KB |
 
 ## Day15
-|         Method |     Mean |   Error |  StdDev |       Gen0 |      Gen1 |      Gen2 | Allocated |
-|--------------- |---------:|--------:|--------:|-----------:|----------:|----------:|----------:|
-| BenchmarkPart1 | 166.8 ms | 3.58 ms | 8.63 ms |  1333.3333 | 1333.3333 | 1333.3333 | 449.87 MB |
-| BenchmarkPart2 | 364.1 ms | 5.66 ms | 5.56 ms | 68500.0000 |         - |         - |  546.9 MB |
+|         Method |     Mean |    Error |   StdDev |      Gen0 |      Gen1 |      Gen2 |    Allocated |
+|--------------- |---------:|---------:|---------:|----------:|----------:|----------:|-------------:|
+| BenchmarkPart1 | 96.31 ms | 1.915 ms | 4.322 ms | 1333.3333 | 1333.3333 | 1333.3333 | 181051.57 KB |
+| BenchmarkPart2 | 49.04 ms | 0.847 ms | 0.707 ms |         - |         - |         - |      1.56 KB |
