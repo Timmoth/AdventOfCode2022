@@ -8,15 +8,10 @@ public static class Day15
 
     public static int ProcessPart1(string[] input, int yPos)
     {
-        var (sensors, minX, maxX) = ParseInput(input);
+        var sensors = ParseInput(input);
 
-        var visibleXPositions = new Dictionary<int, bool>();
-        for(int i = minX; i < maxX; i++)
-        {
-            visibleXPositions[i] = true;
-        }
+        var emptyXPositions = new HashSet<int>();
 
-        var output = 0;
         for(int i = 0; i < sensors.Length; i++)
         {
             var sensor = sensors[i];
@@ -26,28 +21,27 @@ public static class Day15
                 continue;
             }
 
+            for (int x = sensor.X - sensor.Range; x <= sensor.X + sensor.Range; x++)
+            {
+                if (sensor.CanReach(x, yPos))
+                {
+                    emptyXPositions.Add(x);
+                }
+            }
+
             if (sensor.BeaconY == yPos)
             {
                 // Beacon on line does not count
-                visibleXPositions.Remove(sensor.BeaconX);
-            }
-
-            for (int x = sensor.X - sensor.Range; x <= sensor.X + sensor.Range; x++)
-            {
-                if (sensor.CanReach(x, yPos) && visibleXPositions.Remove(x))
-                {
-                    // One more point that could not be a beacon
-                    output++;
-                }
+                emptyXPositions.Remove(sensor.BeaconX);
             }
         }
 
-        return output;
+        return emptyXPositions.Count;
     }
 
     public static long ProcessPart2(string[] input, int maxCoord)
     {
-        var (sensors, minX, maxX) = ParseInput(input);
+        var sensors = ParseInput(input);
 
         for (int i = 0; i < sensors.Length; i++)
         {
@@ -59,13 +53,13 @@ public static class Day15
             for (int j = min; j < sensor.X; j++)
             {
                 int y1 = sensor.Y + (edgeDistance - (j - min));
-                if(y1 >= 0 && y1 <= maxCoord && !sensors.Any(s =>s.CanReach(j, y1)))
+                if(y1 >= 0 && y1 <= maxCoord && sensors.NotInRange(j, y1))
                 {
                     return GetOutput(j, y1);
                 }
 
                 int y2 = sensor.Y - (edgeDistance - (j - min));
-                if (y2 >= 0 && y2 <= maxCoord && !sensors.Any(s => s.CanReach(j, y2)))
+                if (y2 >= 0 && y2 <= maxCoord && sensors.NotInRange(j, y2))
                 {
                     return GetOutput(j, y2);
                 }
@@ -73,14 +67,14 @@ public static class Day15
 
             var x = sensor.X;
             var y = sensor.Y + edgeDistance;
-            if (y >= 0 && y <= maxCoord && !sensors.Any(s => s.CanReach(x, y)))
+            if (y >= 0 && y <= maxCoord && sensors.NotInRange(x, y))
             {
                 return GetOutput(x, y);
             }
 
             x = sensor.X;
             y = sensor.Y - edgeDistance;
-            if (y >= 0 && y <= maxCoord && !sensors.Any(s => s.CanReach(x, y)))
+            if (y >= 0 && y <= maxCoord && sensors.NotInRange(x, y))
             {
                 return GetOutput(x, y);
             }
@@ -88,13 +82,13 @@ public static class Day15
             for (int j = sensor.X + 1; j <= max; j++)
             {
                 int y1 = sensor.Y + (edgeDistance - (j - sensor.X));
-                if (y1 >= 0 && y1 <= maxCoord && !sensors.Any(s => s.CanReach(j, y1)))
+                if (y1 >= 0 && y1 <= maxCoord && sensors.NotInRange(j, y1))
                 {
                     return GetOutput(j, y1);
                 }
 
                 int y2 = sensor.Y - (edgeDistance - (j - sensor.X));
-                if (y2 >= 0 && y2 <= maxCoord && !sensors.Any(s => s.CanReach(j, y2)))
+                if (y2 >= 0 && y2 <= maxCoord && sensors.NotInRange(j, y2))
                 {
                     return GetOutput(j, y2);
                 }
@@ -103,13 +97,9 @@ public static class Day15
 
         return 0;
     }
-    public static (Sensor[] sensors, int minX, int maxX) ParseInput(string[] input)
+    public static Sensor[] ParseInput(string[] input)
     {
         var sensors = new Sensor[input.Length];
-
-        var minX = 0;
-        var maxX = 0;
-
 
         for (var i = 0; i < input.Length; i++)
         {
@@ -130,14 +120,22 @@ public static class Day15
             };
 
             sensor.SetBeacon(beaconX, beaconY);
-
-            minX = Math.Min(sensor.X - sensor.Range, minX);
-            maxX = Math.Max(sensor.X + sensor.Range, maxX);
         }
 
-        return (sensors, minX, maxX);
+        return sensors;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool NotInRange(this Sensor[] sensors, int x, int y)
+    {
+        for(int i = 0; i < sensors.Length; i++) {
+            if (sensors[i].CanReach(x,y))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static long GetOutput(long x, long y) => 4000000 * x + y;
