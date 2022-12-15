@@ -78,6 +78,61 @@ switch (selection)
         Console.WriteLine($"Part1: \t{Day14.ProcessPart1(input)}");
         Console.WriteLine($"Part2: \t{Day14.ProcessPart2(input)}");
         break;
+    case 15:
+        input = File.ReadAllLines("./Day15.csv");
+        Console.WriteLine($"Part1: \t{Day15.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day15.ProcessPart2(input)}");
+        break;
+    case 16:
+        input = File.ReadAllLines("./Day16.csv");
+        Console.WriteLine($"Part1: \t{Day16.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day16.ProcessPart2(input)}");
+        break;
+    case 17:
+        input = File.ReadAllLines("./Day17.csv");
+        Console.WriteLine($"Part1: \t{Day17.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day17.ProcessPart2(input)}");
+        break;
+    case 18:
+        input = File.ReadAllLines("./Day18.csv");
+        Console.WriteLine($"Part1: \t{Day18.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day18.ProcessPart2(input)}");
+        break;
+    case 19:
+        input = File.ReadAllLines("./Day19.csv");
+        Console.WriteLine($"Part1: \t{Day19.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day19.ProcessPart2(input)}");
+        break;
+    case 20:
+        input = File.ReadAllLines("./Day20.csv");
+        Console.WriteLine($"Part1: \t{Day20.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day20.ProcessPart2(input)}");
+        break;
+    case 21:
+        input = File.ReadAllLines("./Day21.csv");
+        Console.WriteLine($"Part1: \t{Day21.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day21.ProcessPart2(input)}");
+        break;
+    case 22:
+        input = File.ReadAllLines("./Day22.csv");
+        Console.WriteLine($"Part1: \t{Day22.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day22.ProcessPart2(input)}");
+        break;
+    case 23:
+        input = File.ReadAllLines("./Day23.csv");
+        Console.WriteLine($"Part1: \t{Day23.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day23.ProcessPart2(input)}");
+        break;
+    case 24:
+        input = File.ReadAllLines("./Day24.csv");
+        Console.WriteLine($"Part1: \t{Day24.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day24.ProcessPart2(input)}");
+        break;
+    case 25:
+        input = File.ReadAllLines("./Day25.csv");
+        Console.WriteLine($"Part1: \t{Day25.ProcessPart1(input)}");
+        Console.WriteLine($"Part2: \t{Day25.ProcessPart2(input)}");
+        break;
     default:
         Console.WriteLine($"Day not found!");
         break;

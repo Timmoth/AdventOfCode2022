@@ -57,7 +57,7 @@
                 monkey.IncrementActivity();
                 while(monkey.Items.TryDequeue(out var item))
                 {
-                    var newWorry = (long)Math.Floor((float)monkey.Operation(item) / 3);
+                    var newWorry = (long)Math.Floor(monkey.Operation(item) / 3.0f);
                     var destMonkeyIndex = monkey.GetMonkeyDestination(newWorry);
                     monkeys[destMonkeyIndex].Items.Enqueue(newWorry);
                 }
@@ -65,7 +65,7 @@
         }
 
         var orderedMonkeys = monkeys.OrderByDescending(m => m.Activity);
-        return orderedMonkeys.ElementAt(0).Activity * orderedMonkeys.ElementAt(0).Activity;
+        return orderedMonkeys.ElementAt(0).Activity * orderedMonkeys.ElementAt(1).Activity;
     }
 
     private static Monkey[] LoadMonkeys(string[] input)
@@ -122,6 +122,6 @@
         }
 
         var orderedMonkeys = monkeys.OrderByDescending(m => m.Activity);
-        return orderedMonkeys.ElementAt(0).Activity * orderedMonkeys.ElementAt(0).Activity;
+        return orderedMonkeys.ElementAt(0).Activity * orderedMonkeys.ElementAt(1).Activity;
     }
 }
